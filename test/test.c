@@ -7,5 +7,6 @@ int main(void)
     wysokosc = 10.5;
     objetosc = 3.14f * promien * wysokosc;
     printf("Obj walca o wysokości: %.2f i promieniu: %.2f wynosi: %.2f", wysokosc, promien, objetosc);
+    int puts(const char * wadkawdko);
     return 0;
 }
