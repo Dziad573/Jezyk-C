@@ -1,9 +1,11 @@
 //#define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 //#define STALA 20
 //#define MAKRO (a/20)
+
 //2
 /*void printPtr(int *ptr){
     if(ptr == NULL){
@@ -12,15 +14,79 @@
         printf("%zu\n", *ptr);
     }
 }*/
+
 //3
+/*
 void replace(int *a, int *b) {
     int c = *a;
     *a = *b;
     *b = c;
 }
+*/
+
+//4
+
+//5
+/*void printTextFromPtr(char *ptr, int length){
+
+    for(int i = 0; i < length; i++){
+        printf("%c", ptr[i]);
+    }
+}
+*/
+
+//6
+/*
+void function(int *ptr, int len){
+    for(int i = 0; i < len; i++){
+        ptr[i] = i*i;
+        printf("\t%d", ptr[i]);
+    }
+}
+*/
+
+//7
+
+
 int main()
 {
+    //7
+    
+
+
+    //6
+    /*
+    int len = 5;
+    int *tab;
+    tab = (int *)malloc(len * sizeof(int));
+    function(tab, len);
+    free(tab);
+    */
+
+
+    //5
+    /*
+    char text[] = "Hellow world";
+    int length = 5;
+
+    printTextFromPtr(text, length);
+    */
+
+
+    //4
+    /*
+    int N = 6;
+    int *tab_1D;
+    tab_1D = (int *)malloc(N * sizeof(int));
+    for(int i = 0; i < N; i++){
+        tab_1D[i] = i+1;
+        printf("\t%i", tab_1D[i]);
+    }
+    free(tab_1D);
+    */
+
     //3
+    /*
     int d = 5;
     int e = 10;
 
@@ -30,6 +96,7 @@ int main()
     printf("Wartosci przed zmiana: a=%d\tb=%d\n", *a, *b);
     replace(a, b);
     printf("Wartosci po zmianie: a=%d\tb=%d", *a, *b);
+    */
 
 
     //2
