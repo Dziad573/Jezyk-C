@@ -46,12 +46,40 @@ void function(int *ptr, int len){
 */
 
 //7
+float *maxPtr(float *numbers, int length){
+    float *maxPtr = numbers;
+    printf("%d\n",maxPtr);
+    for(int i = 0; i < length; i++){
+        if(numbers[i] > *maxPtr){
+            maxPtr = &numbers[i];
+        }
+            printf("%.1f\n",numbers[i]);
+    }
 
+    return maxPtr;
+}
 
 int main()
 {
     //7
-    
+    float tab[] = {4.3, 1.2, 7.2, 3.9, 0.6, 8.5, 1.6};
+    int length = sizeof(tab) / sizeof(tab[0]);
+
+    float *maxElPtr = maxPtr(tab, length);
+
+    if(maxElPtr != NULL){
+        printf("Najwieksza wartosc w tablicy: %.1f\n", *maxElPtr);
+    }else{
+        printf("Dlugosc tablicy jest niepoprawna\n");
+    }
+
+    int b = 1;
+    int *a;
+    a = &b;
+    printf("%d\n",b);
+    printf("%d\n",&b);
+    printf("%d\n",a);
+    printf("%d\n",*a);
 
 
     //6
