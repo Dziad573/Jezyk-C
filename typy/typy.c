@@ -46,6 +46,7 @@ void function(int *ptr, int len){
 */
 
 //7
+/*
 float *maxPtr(float *numbers, int length){
     float *maxPtr = numbers;
     printf("%d\n",maxPtr);
@@ -58,10 +59,45 @@ float *maxPtr(float *numbers, int length){
 
     return maxPtr;
 }
+*/
+
+//8
+int **functionInit(int N, int M){
+    int **tab = (int **)malloc(N * sizeof(int *));
+    for(int i = 0; i < N; i++){
+        tab[i] = (int *)malloc(M * sizeof(int));
+    }
+    for (int i=0; i<N; i++){
+        for(int j=0; j<M; j++){
+            tab[i][j] = i * M + j + 1;
+            //8.1 int random = rand() % 9 + 1;
+            //8.1 tab[i][j] = random;
+        }
+    }
+    return tab;
+}
+void functionPrint(int **tab, int N, int M){
+    for (int i=0; i<N; i++){
+            for(int j=0; j<M; j++){
+                printf("%2d\t", tab[i][j]);
+            }
+            printf("\n");
+        }
+}
 
 int main()
 {
+    //8
+    int N = 2;
+    int M = 3;
+    int **tab = functionInit(N, M);
+    functionPrint(tab, N, M);
+    for(int i = 0; i<N; i++){
+        free(tab[i]);
+    }
+    free(tab);
     //7
+    /*
     float tab[] = {4.3, 1.2, 7.2, 3.9, 0.6, 8.5, 1.6};
     int length = sizeof(tab) / sizeof(tab[0]);
 
@@ -80,6 +116,7 @@ int main()
     printf("%d\n",&b);
     printf("%d\n",a);
     printf("%d\n",*a);
+    */
 
 
     //6
