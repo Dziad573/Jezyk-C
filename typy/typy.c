@@ -62,6 +62,7 @@ float *maxPtr(float *numbers, int length){
 */
 
 //8
+/*
 int **functionInit(int N, int M){
     int **tab = (int **)malloc(N * sizeof(int *));
     for(int i = 0; i < N; i++){
@@ -84,10 +85,44 @@ void functionPrint(int **tab, int N, int M){
             printf("\n");
         }
 }
+*/
+/*
+struct Point2D{
+    int x;
+    int y;
+};
+*/
 
-int main()
-{
+//2
+struct Point{
+    int x;
+    int y;
+};
+
+float distance2D(struct Point p1, struct Point p2){
+    float d = sqrt(pow((p2.x - p1.x),2) + pow((p2.y - p1.y),2));
+    return d;
+}
+
+int main(){ 
+
+    struct Point myPoint1 = {2, 2};
+    struct Point myPoint2 = {5, 5};
+
+    float result = distance2D(myPoint1, myPoint2);
+    printf("Odleglosc %.2f\n", result);
+    
+    /*
+    struct Point2D myPoint;
+
+    myPoint.x = 3;
+    myPoint.y = 4;
+
+    printf("Punkt w 2D: %d %d", myPoint.x, myPoint.y);
+*/
+
     //8
+    /*
     int N = 2;
     int M = 3;
     int **tab = functionInit(N, M);
@@ -96,6 +131,7 @@ int main()
         free(tab[i]);
     }
     free(tab);
+    */
     //7
     /*
     float tab[] = {4.3, 1.2, 7.2, 3.9, 0.6, 8.5, 1.6};
@@ -173,8 +209,8 @@ int main()
     printPtr(ptr1);
     printPtr(ptr2);
 */
-
-
+    //1
+/*
     /*printf("%zu\n", sizeof(int));
     printf("%zu\n", sizeof(int*));
     printf("%zu\n", sizeof(long int));
