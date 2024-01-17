@@ -94,7 +94,7 @@ struct Point2D{
 */
 
 //2
-struct Point{
+/*struct Point{
     int x;
     int y;
 };
@@ -103,15 +103,43 @@ float distance2D(struct Point p1, struct Point p2){
     float d = sqrt(pow((p2.x - p1.x),2) + pow((p2.y - p1.y),2));
     return d;
 }
+*/
 
+//3
+struct Point2D{
+    int x;
+    int y;
+};
+float distance2D(struct Point2D p1, struct Point2D p2){
+    //if (p1.x == p2.x && p1.y == p2.y) {
+    //    return 0.0;
+    //} nie jest wymagane przy length - 1 w path2D
+    float d = sqrt(pow((p2.x - p1.x),2) + pow((p2.y - p1.y),2));
+    return d;
+}
+float path2D(struct Point2D ps[], int length){
+    float sum = 0.0;
+    for(int i = 0; i < length - 1; i++){
+        sum += distance2D(ps[i], ps[i + 1]);
+    }
+        return sum;
+}
 int main(){ 
+    //3
+    struct Point2D myPoints[] = {{1,1},{1,1},{1,1}};
+    float totalDistance = path2D(myPoints, sizeof(myPoints)/sizeof(myPoints[0]));
+    printf("%.2f", totalDistance);
 
+
+    //2
+    /*
     struct Point myPoint1 = {2, 2};
     struct Point myPoint2 = {5, 5};
 
     float result = distance2D(myPoint1, myPoint2);
     printf("Odleglosc %.2f\n", result);
-    
+    */
+
     /*
     struct Point2D myPoint;
 
