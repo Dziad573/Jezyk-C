@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-
+#include <string.h>
 //#define STALA 20
 //#define MAKRO (a/20)
 
@@ -94,7 +94,8 @@ struct Point2D{
 */
 
 //2
-/*struct Point{
+/*
+struct Point{
     int x;
     int y;
 };
@@ -106,6 +107,7 @@ float distance2D(struct Point p1, struct Point p2){
 */
 
 //3
+/*
 struct Point2D{
     int x;
     int y;
@@ -124,12 +126,62 @@ float path2D(struct Point2D ps[], int length){
     }
         return sum;
 }
+*/
+
+//4
+/*
+union Number{
+    int intNumber;
+    float floatNumber;
+    double doubleNumber;
+};
+*/
+
+//5
+struct Book{
+    int id;
+    char name[50];
+    char author[50];
+    int year;
+};
+
 int main(){ 
+    //5
+    struct Book myBook;
+
+    myBook.id = 1;
+    printf("ID: %d\n", myBook.id);
+
+    strcpy(myBook.name, "Lalka");
+    printf("Name: %s\n", myBook.name);
+
+    strcpy(myBook.author, "Boleslaw Prus");
+    printf("Author: %s\n", myBook.author);
+
+    myBook.year = 1871;
+    printf("Year: %d\n", myBook.year);
+
+
+
+    //4
+    /*
+    union Number myNum;
+    myNum.intNumber = 6;
+    printf("%d\n", myNum.intNumber);
+
+    myNum.floatNumber = 6.56;
+    printf("%.2f\n", myNum.floatNumber);
+
+    myNum.doubleNumber = 61213142.6767676767676767;
+    printf("%d\t %.2f\t %lf"myNum.doubleNumber);
+*/
+
     //3
+/*
     struct Point2D myPoints[] = {{1,1},{1,1},{1,1}};
     float totalDistance = path2D(myPoints, sizeof(myPoints)/sizeof(myPoints[0]));
     printf("%.2f", totalDistance);
-
+*/
 
     //2
     /*
@@ -139,7 +191,8 @@ int main(){
     float result = distance2D(myPoint1, myPoint2);
     printf("Odleglosc %.2f\n", result);
     */
-
+    
+    //1
     /*
     struct Point2D myPoint;
 
