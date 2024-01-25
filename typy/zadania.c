@@ -59,7 +59,7 @@ float mean(int numbers[], int length){
     }
     return (float)sum / (length-1);
 }
-*/
+
 
 //9
 void reverse(int numbers[], int length){
@@ -75,8 +75,42 @@ void reverse(int numbers[], int length){
         printf("%d\t", numbers[i]);
     }
 }
+*/
+//---------------wsk
+//1
 
+//2
+void printPtr(int *ptr){
+    if(ptr == NULL){
+        printf("brak przydzielonej pamieci");
+    }else{
+        printf("%d", *ptr);
+    }
+
+}
 int main(){
+
+
+    //2
+
+    int x;
+    scanf("%d", &x);
+    int *ptr = &x;
+    printPtr(ptr);
+
+
+/*
+    //1
+
+    printf("%d\t", sizeof(int));
+    printf("%d\t", sizeof(int*));
+    printf("%d\t", sizeof(long int));
+    printf("%d\t", sizeof(float));
+    printf("%d\t", sizeof(double));
+    printf("%d\t", sizeof(int**));
+
+//---------wsk ^
+
     //9
 
     int length;
@@ -84,9 +118,9 @@ int main(){
     int numbers[length];
     reverse(numbers, length);
 
-    
 
-/*
+
+
 
     int length;
     scanf("%d\n", &length);
