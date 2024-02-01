@@ -1,4 +1,4 @@
-/*#include <stdio.h>
+#include <stdio.h>
 #include <math.h>
 int isPrime(int n){
     int prime = 1;
@@ -13,42 +13,40 @@ int isPrime(int n){
     }
     return prime;
 }
-
 int main(){
     int n;
     scanf("%d", &n);
     printf("%d", isPrime(n));
     return 0;
 }
-*/
 
-/*
+
 #include <stdio.h>
+
 int max(int tab[2][3]){
     int max = tab[0][0];
-    for(int j = 0; j<2; j++){
-        for(int i = 0; i<3; i++){
-            if(tab[j][i]>max){
-                max = tab[j][i];
+    for(int i=0; i<2; i++){
+        for(int j=0; j<3; j++){
+            if(tab[i][j]>max){
+                max = tab[i][j];
             }
         }
     }
     return max;
 }
-
 int main(){
-    int tab[2][3] = {{2,3,1}, {5,9,1}};
-    printf("%d",max(tab));
+    int tab[2][3] = {{2,5,1}, {7,6,2}};
+    printf("%d", max(tab));
     return 0;
 }
-*/
+
 
 
 #include <stdio.h>
 #include <stdlib.h>
-int sort(int *tab, int len){
-    for(int i=0; i<len - 1; i++){
-        for(int j=0; j<len - i - 1; j++){
+void sort(int *tab ,int N){
+    for(int i=0; i<N - 1; i++){
+        for(int j=0; j<N - i - 1; j++){
             if(tab[j]>tab[j+1]){
                 int temp = tab[j];
                 tab[j] = tab[j+1];
@@ -57,48 +55,55 @@ int sort(int *tab, int len){
         }
     }
 }
-
 int main(){
     int N;
-    scanf("%d", &N);
+    scanf("%d ", &N);
     int *tab = malloc(N * sizeof(int));
+    
     for(int i=0; i<N; i++){
         scanf("%d", &tab[i]);
     }
+
     sort(tab, N);
+
     for(int i=0; i<N; i++){
-        printf("%d ", tab[i]);
+        printf("%d", tab[i]);
     }
     free(tab);
     return 0;
 }
 
 
-/*
-#include <stdio.h>
-struct Student{
-    char imie[10]; 
-    char nazwisko[10];
-    int indeks;
-    float oceny[20];
-}
-*/
 
-/*
 #include <stdio.h>
 struct Student{
-    float oceny[4];
+    char imie[10];
+    char nazwisko[10];
+    int indeks[5];
+    int oceny[5];
+};
+
+//int main(){
+//    struct Student s = {"John", "Doe", {1} , {5,5,4,4,5}};
+//    printf("%d", s.oceny[2]);
+//}
+
+
+#include <stdio.h>
+
+struct Student{
+    float oceny[6];
 };
 float studentMean(struct Student s){
     float sum = 0.0;
-    for(int i=0; i<4; i++){
+    for(int i=0;i<(sizeof(s.oceny)/sizeof(s.oceny[0])); i++){
         sum += s.oceny[i];
     }
     return sum/(sizeof(s.oceny)/sizeof(s.oceny[0]));
 }
+
 int main(){
-    struct Student mys = {4,4,5,5};
-    printf("%.2f", studentMean(mys));
+    struct Student s = {5,4,5,4,5,4};
+    printf("%.2f", studentMean(s));
     return 0;
 }
-*/

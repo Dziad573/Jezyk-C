@@ -86,6 +86,7 @@ void functionPrint(int **tab, int N, int M){
         }
 }
 */
+
 /*
 struct Point2D{
     int x;
