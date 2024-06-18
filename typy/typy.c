@@ -1,8 +1,184 @@
-//#define _CRT_SECURE_NO_WARNINGS 1
+//ZAD 1.2
+
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 #include <string.h>
+
+#define MAX 999
+
+// Struktura dla danych studenta
+struct Student {
+    int id;
+    char firstName[60];
+    char lastName[60];
+    float avg;
+};
+
+// Struktura kolejki
+struct Queue {
+    struct Student elements[MAX];
+    int front;
+    int rear;
+    int size;
+};
+
+// Funkcja inicjalizująca kolejkę
+void initQueue(struct Queue* q) {
+    q->front = 0;
+    q->rear = -1;
+    q->size = 0;
+}
+
+// Funkcja dodająca element do kolejki
+void enqueue(struct Queue* q, struct Student student) {
+    q->rear = (q->rear + 1) % MAX;
+    q->elements[q->rear] = student;
+    q->size++;
+    printf("Enqueue: %s %s \n", student.firstName, student.lastName);
+}
+
+// Funkcja usuwająca element z kolejki
+struct Student dequeue(struct Queue* q) {
+    struct Student student = q->elements[q->front];
+    q->front = (q->front + 1) % MAX;
+    q->size--;
+    printf("Dequeue %s %s \n", student.firstName, student.lastName);
+    return student;
+}
+
+// Funkcja sprawdzająca, czy kolejka jest pusta
+int isEmpty(struct Queue* q) {
+    return q->size == 0;
+}
+
+// Funkcja sprawdzająca, czy kolejka jest pełna
+int isFull(struct Queue* q) {
+    return q->size == MAX;
+}
+
+// Funkcja wyświetlająca całą kolejkę
+void display(struct Queue* q) {
+    printf("Kolejka:\n");
+    for (int i = 0; i < q->size; i++) {
+        int id = (q->front + i) % MAX;
+        printf("id: %d, Imie i nazwisko: %s %s, Średnia ocen: %.2f\n", q->elements[id].id, q->elements[id].firstName, q->elements[id].lastName, q->elements[id].avg);
+    }
+}
+int main() {
+    struct Queue queue;
+    initQueue(&queue);
+
+    // Przykładowi studenci
+    struct Student student1 = {1, "Krystian", "Kowalski", 4.6};
+    struct Student student2 = {2, "Anna", "Nowak", 3.7};
+    struct Student student3 = {3, "Piotr", "Kowalski", 4.2};
+
+    // Działanie funkcji enqueue
+    enqueue(&queue, student1);
+    enqueue(&queue, student2);
+    enqueue(&queue, student3);
+
+    // Wyświetlenie całej kolejki
+    display(&queue);
+
+    // Działanie funkcji dequeue
+    dequeue(&queue);
+    display(&queue);
+    dequeue(&queue);
+    display(&queue);
+    dequeue(&queue);
+    display(&queue);
+
+    return 0;
+}
+
+
+/*//ZAD 1.1
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX 999
+
+// Struktura dla danych studenta
+struct Student {
+    int id;
+    char firstName[60];
+    char lastName[60];
+    float avg;
+};
+
+// Struktura stosu
+struct Stack {
+    struct Student elements[MAX];
+    int top;
+};
+
+// Funkcja inicjalizująca stos
+void initStack(struct Stack* s) {
+    s->top = -1;
+}
+
+// Funkcja dodająca element na stos
+void push(struct Stack* s, struct Student student) {
+    s->elements[++(s->top)] = student;
+    printf("Dodano: %s %s \n", student.firstName, student.lastName);
+}
+
+// Funkcja usuwająca element ze stosu
+struct Student pop(struct Stack* s) {
+    struct Student student = s->elements[(s->top)--];
+    printf("Usunięto: %s %s \n", student.firstName, student.lastName);
+    return student;
+}
+
+
+// Funkcja wyświetlająca cały stos
+void display(struct Stack* s) {
+    printf("Elementy stosu:\n");
+    for (int i = s->top; i >= 0; i--) {
+        printf("Id: %d, Imie i nazwisko: %s %s, Średnia ocen: %.2f\n", s->elements[i].id, s->elements[i].firstName, s->elements[i].lastName, s->elements[i].avg);
+    }
+}
+
+int main() {
+    struct Stack stack;
+    initStack(&stack);
+
+    // Przykładowi studenci
+    struct Student student1 = {1, "Krystian", "Kowalski", 4.6};
+    struct Student student2 = {2, "Anna", "Nowak", 3.7};
+    struct Student student3 = {3, "Piotr", "Kowalski", 4.2};
+
+    // Działanie funkcji push
+    push(&stack, student1);
+    push(&stack, student2);
+    push(&stack, student3);
+
+    // Wyświetlenie całego stosu
+    display(&stack);
+
+    // Działanie funkcji pop
+    pop(&stack);
+    display(&stack);
+    pop(&stack);
+    display(&stack);
+    pop(&stack);
+    display(&stack);
+
+    return 0;
+}
+
+
+*/
+
+
+
+//#define _CRT_SECURE_NO_WARNINGS 1
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <math.h>
+//#include <string.h>
 //#define STALA 20
 //#define MAKRO (a/20)
 
@@ -139,28 +315,28 @@ union Number{
 */
 
 //5
-struct Book{
-    int id;
-    char name[50];
-    char author[50];
-    int year;
-};
+// struct Book{
+//     int id;
+//     char name[50];
+//     char author[50];
+//     int year;
+// };
 
-int main(){ 
-    //5
-    struct Book myBook;
+// int main(){ 
+//     //5
+//     struct Book myBook;
 
-    myBook.id = 1;
-    printf("ID: %d\n", myBook.id);
+//     myBook.id = 1;
+//     printf("ID: %d\n", myBook.id);
 
-    strcpy(myBook.name, "Lalka");
-    printf("Name: %s\n", myBook.name);
+//     strcpy(myBook.name, "Lalka");
+//     printf("Name: %s\n", myBook.name);
 
-    strcpy(myBook.author, "Boleslaw Prus");
-    printf("Author: %s\n", myBook.author);
+//     strcpy(myBook.author, "Boleslaw Prus");
+//     printf("Author: %s\n", myBook.author);
 
-    myBook.year = 1871;
-    printf("Year: %d\n", myBook.year);
+//     myBook.year = 1871;
+//     printf("Year: %d\n", myBook.year);
 
 
 
@@ -403,6 +579,6 @@ int main(){
     scanf("%d", &a);
     printf("a = %d a + 20 = %d, a + a/20=%d\n", a, a+STALA, a+MAKRO);
     */
-    return 0;
+//     return 0;
     
-}
+// }
